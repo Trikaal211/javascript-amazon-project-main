@@ -1,4 +1,5 @@
- const products = [
+ 
+export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -645,6 +646,22 @@
     id: "bc2847e9-5323-403f-b7cf-57fde044a955",
     image: "images/products/men-cozy-fleece-zip-up-hoodie-red.jpg",
     name: "Men's Full-Zip Hooded Fleece Sweatshirt",
+    rating: {
+      stars: 4.5,
+      count: 3157
+    },
+    priceCents: 2400,
+    keywords: [
+      "sweaters",
+      "hoodies",
+      "apparel",
+      "mens"
+    ]
+  },
+  {
+    id: "bc2847e9-5323-403f-b7cf-57fde044a9505",
+    image: "https://artworks.thetvdb.com/banners/v4/series/417648/icons/66ee510112e82.png",
+    name: "batman",
     rating: {
       stars: 4.5,
       count: 3157
