@@ -48,7 +48,7 @@
 // },{
 
 // }]
-import {cart} from '../data/cart.js'
+import {cart, addtoCart} from '../data/cart.js'
 import { products } from '../data/products.js';
 let html = "";
 products.forEach((product) => {
@@ -76,7 +76,7 @@ products.forEach((product) => {
           </div>
 
           <div class="product-quantity-container ">
-            <select class= "js-quantity-selector">
+            <select class= "js-quantity-selector-${product.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -104,38 +104,10 @@ products.forEach((product) => {
         </div>
     `
 });
-const genrate = document.querySelector('.products-grid');
-genrate.innerHTML = html;
-let timer;
-document.querySelectorAll(".js-add-to-cart")
-
-  .forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const { productId } = btn.dataset;;
-      let matchingItem;
-     
-      cart.forEach((item) => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      });
-
-      const quantitySelector = document.querySelector(
-        '.js-quantity-selector')
-        ;
-      const quantity = Number(quantitySelector.value);
-
-      if (matchingItem) {
-        matchingItem.quantity += quantity;
-      } else {
-        cart.push({
-          productId,
-          quantity
-        });
-      }
-      let cartQuantity = 0;
-      cart.forEach((item) => {
-        cartQuantity += item.quantity
+function cartQuantity(productId){
+  let cartQuantity = 0;
+      cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity
       });
          const addedMessage = document.querySelector(
         `.js-added-to-cart-${productId}`
@@ -159,7 +131,18 @@ document.querySelectorAll(".js-add-to-cart")
       } else {
         quant.style.color = "white"
       };
-      console.log(cart)
+     
 
-    });
+    }
+const genrate = document.querySelector('.products-grid');
+genrate.innerHTML = html;
+let timer;
+document.querySelectorAll(".js-add-to-cart")
+.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const { productId } = btn.dataset;;
+  
+    addtoCart(productId)
+    cartQuantity(productId) 
   });
+})
