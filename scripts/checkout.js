@@ -1,5 +1,9 @@
 import {cart,removeCart} from '../data/cart.js'
 import { products } from '../data/products.js';
+import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js"
+let j = dayjs();
+let m = j.add(7, "days")
+console.log(m.format('dddd, MMMM D, '))
 let checkout=""
 cart.forEach((cartItem)=>{
     const productId = cartItem.productId;
@@ -10,6 +14,8 @@ cart.forEach((cartItem)=>{
         matchingProduct = product;
       }
     });
+
+  
 
     checkout+= `
      <div class="cart-item-container js-delete-container-${matchingProduct.id}">
