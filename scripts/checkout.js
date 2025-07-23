@@ -6,6 +6,9 @@ import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js"
 let j = dayjs();
 let m = j.add(7, "days")
 console.log(m.format('dddd, MMMM D, '))
+
+function renderOrderSummary(){
+
 let checkout=""
 cart.forEach((cartItem)=>{
   console.log(cart.length);
@@ -134,5 +137,8 @@ document.querySelectorAll('.js-delivery-option')
   element.addEventListener('click',()=>{
     const{productId, deliveryOptionId} = element.dataset
 updateDeliveryOption(productId, deliveryOptionId)
+renderOrderSummary();
   });
-});
+})
+};
+renderOrderSummary()
