@@ -1,6 +1,6 @@
 import {cart,removeCart} from '../../data/cart.js'
 import { products } from '../../data/products.js';
-import { updateDeliveryOption } from '../data/cart.js';
+import { updateDeliveryOption } from '../../data/cart.js';
 import { deliveryOptions } from '../../data/deliveryOption.js';
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js"
 let j = dayjs();
@@ -31,7 +31,7 @@ cart.forEach((cartItem)=>{
   });
     const today = dayjs();
         const deliveryDate = today.add(
-          deliveryoption?.deliveryDays,'days'
+          deliveryoption.deliveryDays,'days'
         );
         const dateString = deliveryDate.format(
           'dddd, MMMM, D'
